@@ -1,0 +1,32 @@
+{
+	"name": "reactssr",
+	"version": "1.0.0",
+	"description": "SSR in reactjs",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index",
+		"devCnS": "npm run build && npm run dev",
+		"build": "cd client && npm run build",
+		"start": "node index"
+	},
+	"keywords": [
+		"ssr"
+	],
+	"author": "Anjan kp",
+	"license": "ISC",
+	"dependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/preset-env": "^7.10.2",
+		"@babel/preset-react": "^7.10.1",
+		"@babel/register": "^7.10.1",
+		"express": "^4.17.1",
+		"ignore-styles": "^5.0.1"
+	},
+	"engines": {
+		"node": "12.x"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
+	}
+}
