@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
+import './App.scss';
+import NewsList from './components/NewsList';
 
-function App() {
-	const [count, setCount] = useState(0);
-	const plusCount = () => {
-		setCount(count + 1);
-	}
+function App({ initData }) {
+
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h4>React SSR!!!</h4>
-				<button onClick={plusCount}>Count is {count}</button>
-			</header>
-		</div>
-	);
+		<NewsList initData={initData} />
+	)
 }
 
 export default App;

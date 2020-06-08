@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "nodemon index",
-		"devCnS": "npm run build && npm run dev",
+		"devCnS": "cd client && npm run build && cd .. && npm run dev",
 		"build": "cd client && npm install && npm run build",
 		"start": "node index"
 	},
@@ -21,7 +21,8 @@
 		"@babel/preset-react": "^7.10.1",
 		"@babel/register": "^7.10.1",
 		"express": "^4.17.1",
-		"ignore-styles": "^5.0.1"
+		"ignore-styles": "^5.0.1",
+		"node-fetch": "^2.6.0"
 	},
 	"engines": {
 		"node": "12.x"
