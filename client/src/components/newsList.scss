@@ -31,6 +31,10 @@
 		vertical-align: bottom;
 	    padding: 0 5px;
 	    text-align: left;
+		position: -webkit-sticky;
+		position: -moz-sticky;
+		position: -o-sticky;
+		position: -ms-sticky;
 		position: sticky;
   		top: 0;
 		background: #ff6300 !important;
