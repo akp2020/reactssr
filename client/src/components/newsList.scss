@@ -31,14 +31,14 @@
 		vertical-align: bottom;
 	    padding: 0 5px;
 	    text-align: left;
+		position: sticky;
+  		top: 0;
+		background: #ff6300 !important;
+	    color: #fff;
 	}
 	
 	tr:nth-child(even) {background: #e7e7dd}
 	
-	thead tr {
-		background: #ff6300 !important;
-	    color: #fff;
-	}
 	.bold {
 		font-size: 1.2em;
 	}
