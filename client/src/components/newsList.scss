@@ -30,7 +30,6 @@
 	th {
 		vertical-align: bottom;
 	    padding: 0 5px;
-	    text-align: left;
 		position: -webkit-sticky;
 		position: -moz-sticky;
 		position: -o-sticky;
@@ -45,5 +44,22 @@
 	
 	.bold {
 		font-size: 1.2em;
+	}
+	
+	td.pn {
+		color:#ff6300;
+		text-align: right;
+		font-size: 1.1em;
+    	font-weight: bold;
+    	padding: 8px 5px;
+			span {
+				margin: 5px;
+				cursor: pointer;
+			}
+			.count0 {
+				opacity: .6;
+    			pointer-events: none;
+			}
+
 	}
 }
