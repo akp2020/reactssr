@@ -30,14 +30,14 @@ app.get('/', (req, res) => {
 			});
 			console.log(initData.length);
 			let app = renderToString(<App initData={initData} />);
-			const indexFile = path.resolve('./client/public/index.html');
-			//const indexFile = path.resolve('./client/build/index.html');
+			//const indexFile = path.resolve('./client/public/index.html');
+			const indexFile = path.resolve('./client/build/index.html');
 			fs.readFile(indexFile, 'utf8', (err, data) => {
 				if (err) {
 					return res.status(500).send('Error occured in reading file');
 				}
 				data = data.replace('</head><body><div id="root">', `<script>window.curPage=${global.curPage};window.initData = ${JSON.stringify(initData).replace(/</g, '\\u003c')}</script></head><body><div id="root">${app}`);
-				data = data.replace(`</body>`, `<script src="http://localhost:3000/static/js/bundle.js"></script><script src="http://localhost:3000/static/js/0.chunk.js"></script><script src="http://localhost:3000/static/js/1.chunk.js"></script><script src="http://localhost:3000/static/js/main.chunk.js"></script></body>`);
+				//data = data.replace(`</body>`, `<script src="http://localhost:3000/static/js/bundle.js"></script><script src="http://localhost:3000/static/js/0.chunk.js"></script><script src="http://localhost:3000/static/js/1.chunk.js"></script><script src="http://localhost:3000/static/js/main.chunk.js"></script></body>`);
 
 				return res.send(data);
 			})
@@ -50,8 +50,8 @@ app.get('/', (req, res) => {
 
 });
 
-app.use(express.static('client/public'));
-//app.use(express.static('client/build'));
+//app.use(express.static('client/public'));
+app.use(express.static('client/build'));
 
 let port = process.env.PORT || 108;
 
