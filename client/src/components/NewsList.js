@@ -5,12 +5,17 @@ import domain from 'url-domain-name';
 import './newsList.scss';
 
 const NewsList = ({ initData }) => {
+	const bEnv = global.window;
 	TimeAgo.addLocale(en);
 	const timeAgo = new TimeAgo('en-US');
 	let curPage;
-	if(global.window !== undefined){
+	if(bEnv !== undefined){
 		curPage = window.curPage;
 		delete window.curPage;
+	}
+	
+	const upVote = (e)=>{
+		
 	}
 	
 	const navigate = (e)=>{
