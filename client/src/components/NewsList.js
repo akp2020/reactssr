@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import domain from 'url-domain-name';
@@ -15,11 +15,7 @@ const NewsList = ({ initData }) => {
 	
 	const navigate = (e)=>{
 			if(e.target.textContent === "Previous"){
-				if(curPage === 1 || curPage === 0){
-					window.location.href = "/";
-				} else{
-					window.location.href=`/?page=${curPage-1}`; 
-				} 				
+				curPage === 1 ?  window.location.href = "/" : window.location.href=`/?page=${curPage-1}`;				
 			}
 			else {
 				window.location.href=`/?page=${curPage+1}`;	
@@ -45,13 +41,13 @@ const NewsList = ({ initData }) => {
 							<td><span className="up"></span></td>
 							<td><a href={data.url} className="bold">{data.title}</a>
 								<span>{data.url !== null ? '(' + domain.from(String(data.url)).replace('www.', '') + ')' : ""}</span>
-								<span>{timeAgo.format(new Date(data.created_at)).replace('an','1')}</span><span>by {data.author}</span></td>
+								<span>{timeAgo.format(new Date(data.created_at)).replace('an','1').replace('a minute', '1 minute')}</span><span>by {data.author}</span></td>
 						</tr>
 					)
 					}
 					<tr>
 						<td colSpan="4" className="pn">
-							<span id="prev" onClick={navigate}>Previous</span><b>|</b><span onClick={navigate}>Next</span>
+							<span className={global.curPage===0?'count0': ''}  suppressHydrationWarning={true} onClick={navigate}>Previous</span><b>|</b><span onClick={navigate}>Next</span>
 						</td>
 					</tr>
 				</tbody>

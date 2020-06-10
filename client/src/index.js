@@ -4,9 +4,14 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+let initData;
+if(global.window !== undefined){
+		initData = window.initData;
+		delete window.initData;
+	}
 ReactDOM.hydrate(
   <React.StrictMode>
-    <App initData={window.initData} />
+    <App initData={initData} />
   </React.StrictMode>,
   document.getElementById('root')
 );
