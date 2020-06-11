@@ -15,7 +15,9 @@
 		width: 100%;
 		margin: 0 auto;
 	    background: #f6f6ef;
-		border-collapse: collapse;
+		border-collapse: collapse;		
+	}
+	.navTable{
 		border-bottom: 3px solid #ff6300;
 	}
 	
@@ -39,6 +41,7 @@
   		top: 0;
 		background: #ff6300 !important;
 	    color: #fff;
+    	z-index: 1;
 	}
 	
 	tr:nth-child(even) {background: #e7e7dd}
@@ -62,5 +65,38 @@
     			pointer-events: none;
 			}
 
+	}
+	.newsD {
+		a{
+			margin-right: 4px;
+		}
+		span {
+			opacity: .6;
+		}
+		.hide:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		.hide, .auth {
+			opacity: 1;
+			margin-right: 4px;
+		}
+		.auth::before {
+			content:"by";
+			margin: 0 4px;
+			opacity: .5;
+    		font-weight: normal;
+		}
+		
+		.hide::before, .hide::after{
+			content:"[";
+			opacity: 0.5;
+			font-weight: normal;
+    		margin: 0 4px;
+		}
+		
+		.hide::after{
+			content:"]";
+		}
 	}
 }
