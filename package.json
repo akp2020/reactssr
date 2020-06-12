@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon index",
-		"devCnS": "cd client && npm run build && cd .. && npm run dev",
+		"dev": "concurrently \"cd client && npm start\" \"nodemon index\"",
+		"devb": "concurrently \"cd client && npm run build\" \"nodemon index\"",
 		"build": "cd client && npm install && npm run build",
 		"start": "node index"
 	},

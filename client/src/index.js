@@ -9,6 +9,7 @@ if(global.window !== undefined){
 		initData = window.initData;
 		delete window.initData;
 	}
+	
 ReactDOM.hydrate(
   <React.StrictMode>
     <App initData={initData} />
