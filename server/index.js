@@ -20,14 +20,10 @@ app.get('/', (req, res) => {
 		global.curPage = pageNum;
 	}
 	
-	fetch(`http://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=30${page}`)
+	fetch(`http://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=20${page}`)
 		.then(res => res.json())
 		.then(data => {
-			const initData = [];
-			data.hits.forEach((obj)=>{
-				const {objectID,num_comments,points,url,title,created_at,author} = obj;
-				initData.push({objectID,num_comments,points,url,title,created_at,author});
-			});			
+			const initData = data.hits.map(({objectID,num_comments,points,url,title,created_at,author})=>({objectID,num_comments,points,url,title,created_at,author}));				
 			let app = renderToString(<App initData={initData} />);
 			//const indexFile = path.resolve('./client/public/index.html');
 			const indexFile = path.resolve('./client/build/index.html');

@@ -11,8 +11,7 @@ const NewsList = ({ initData }) => {
 	TimeAgo.addLocale(en);
 	const timeAgo = new TimeAgo('en-US');
 	let curPage;
-	const [data, setData] = useState(initData);	
-	
+
 	if (bEnv !== undefined) {
 		curPage = window.curPage;
 		//delete window.curPage;
@@ -21,62 +20,41 @@ const NewsList = ({ initData }) => {
 		}
 		else {
 			hiddenIds = (localStorage.getItem('hiddenIds')).split(",");
-			const newData = [];
-			hiddenIds.forEach((elm) => {
-				data.map((obj) => {
-					if (obj.objectID !== elm) {
-						newData.push(obj);
-					}
-				});
+			initData = initData.filter(elm => {
+				return !hiddenIds.includes(elm.objectID);
 			});
-			//setData(newData);
 		}
 	}
 
+	const [data, setData] = useState(initData);
+
 	const upVote = (e) => {
 		const id = e.target.dataset.id;
-		const updatedData = data.map(obj=>{
-			if(obj.objectID === id){
-				obj.points = obj.points+1;
+		const updatedData = data.map(obj => {
+			if (obj.objectID === id) {
+				obj.points = obj.points + 1;
 			}
 			return obj;
 		});
 		setData(updatedData);
 	}
-	
+
 	const filteredData = (id) => {
-		const newData = [];
-		data.map((obj) => {
-			if (obj.objectID !== id) {
-				newData.push(obj);
-			}
-		});
-		return newData;
+		return data.filter(obj => obj.objectID !== id);
 	}
-	
-	const filteredVotes = ()=>{
-		const updatedVotes = [];
-		data.map((obj) => {
-			const { objectID, points } = obj;
-			updatedVotes.push({ objectID, points });
-		});
-		return updatedVotes;
+
+	const filteredVotes = () => {
+		return data.map(({ objectID, points }) => ({ objectID, points }));
 	}
-	
+
 	const [votes, setVotes] = useState(filteredVotes);
 
 	useEffect(() => {
-		/*const updatedVotes = [];
-		data.map((obj) => {
-			const { objectID, points } = obj;
-			updatedVotes.push({ objectID, points });
-		});*/
 		setVotes(filteredVotes);
 	}, [data]);
 
 	const hidePost = (e) => {
 		const id = e.target.dataset.id;
-		const newData = [];		
 		setData(filteredData(id));
 		hiddenIds.push(id);
 		localStorage.setItem('hiddenIds', hiddenIds);
