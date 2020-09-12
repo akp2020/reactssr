@@ -22,7 +22,7 @@
 		"@babel/register": "^7.10.1",
 		"express": "^4.17.1",
 		"ignore-styles": "^5.0.1",
-		"node-fetch": "^2.6.0"
+		"node-fetch": "^2.6.1"
 	},
 	"engines": {
 		"node": "12.x"
